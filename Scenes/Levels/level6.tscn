@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ue75j8tqgnbw"]
+
+[ext_resource type="PackedScene" uid="uid://csirwvr7dkby7" path="res://Scenes/Levels/level.tscn" id="1_kttwb"]
+[ext_resource type="PackedScene" uid="uid://dqoyoemubhbv3" path="res://Scenes/Platforms/Wood Cup.tscn" id="2_pv83b"]
+[ext_resource type="PackedScene" uid="uid://cp1j8f6sulgxk" path="res://Scenes/MetalBar/metal_bar.tscn" id="3_bhywd"]
+
+[node name="Level" instance=ExtResource("1_kttwb")]
+
+[node name="Cup" parent="." index="7" instance=ExtResource("2_pv83b")]
+position = Vector2(424, 333)
+
+[node name="Cup2" parent="." index="8" instance=ExtResource("2_pv83b")]
+position = Vector2(688, 333)
+
+[node name="MetalBar" parent="." index="9" instance=ExtResource("3_bhywd")]
+position = Vector2(326, 304)
+scale = Vector2(1, 2.48)
+
+[node name="MetalBar2" parent="." index="10" instance=ExtResource("3_bhywd")]
+position = Vector2(579, 304)
+scale = Vector2(1, 2.48)

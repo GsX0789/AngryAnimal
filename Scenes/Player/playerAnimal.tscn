@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8xtqfinaxwe5"]
+
+[ext_resource type="Script" path="res://Scenes/Player/playerAnimal.gd" id="1_6t4um"]
+[ext_resource type="Texture2D" uid="uid://dg5cxlrwtxa1o" path="res://icon.svg" id="1_31vv5"]
+[ext_resource type="Texture2D" uid="uid://b52fscss7tj1t" path="res://assets/items/arrow.png" id="3_67d1m"]
+[ext_resource type="AudioStream" uid="uid://bigjbeefqxovh" path="res://assets/audio/stretch2.ogg" id="4_lwqef"]
+[ext_resource type="AudioStream" uid="uid://w145m1b4wwha" path="res://assets/audio/catapult.ogg" id="5_ntxbs"]
+[ext_resource type="AudioStream" uid="uid://bgqx4127vnnoc" path="res://assets/audio/kick_wood.ogg" id="6_ecx0j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nrtqd"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyd46"]
+radius = 13.0384
+
+[node name="Animal" type="RigidBody2D" groups=["animal"]]
+input_pickable = true
+mass = 0.8
+physics_material_override = SubResource("PhysicsMaterial_nrtqd")
+freeze = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_6t4um")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_31vv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gyd46")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.3, 1.3)
+rect = Rect2(-7, -7, 15, 15)
+
+[node name="DebugStateLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_top = -54.0
+offset_right = 31.5
+offset_bottom = -37.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "DebugText"
+
+[node name="Arrow" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_67d1m")
+offset = Vector2(150, 0)
+
+[node name="StrechSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lwqef")
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ntxbs")
+
+[node name="KickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ecx0j")
+
+[node name="OutOfBoundsCounter" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="OutOfBoundsCounter" to="." method="_on_out_of_bounds_counter_timeout"]

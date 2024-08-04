@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp1j8f6sulgxk"]
+
+[ext_resource type="Texture2D" uid="uid://dgyinkgwfuh5r" path="res://assets/env/elementStone025.png" id="1_afi7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6dpq"]
+size = Vector2(12, 61)
+
+[node name="MetalBar" type="StaticBody2D" groups=["metalBar"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.272)
+texture = ExtResource("1_afi7m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_y6dpq")

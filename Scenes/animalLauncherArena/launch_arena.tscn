@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfm73webm5obx"]
+
+[ext_resource type="Texture2D" uid="uid://dgyinkgwfuh5r" path="res://assets/env/elementStone025.png" id="1_jqs6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3vn4"]
+size = Vector2(73.8734, 211.48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smjmj"]
+size = Vector2(59, 8)
+
+[node name="LaunchArena" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="LeftPart" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.108293, 0.271893)
+texture = ExtResource("1_jqs6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+scale = Vector2(0.108293, 0.271893)
+shape = SubResource("RectangleShape2D_d3vn4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(14, 5)
+rotation = 0.622563
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(26, 26)
+rotation = 1.5708
+scale = Vector2(0.108293, 0.271893)
+texture = ExtResource("1_jqs6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(25.5, 26)
+shape = SubResource("RectangleShape2D_smjmj")

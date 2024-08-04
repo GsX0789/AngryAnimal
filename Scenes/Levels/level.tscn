@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://csirwvr7dkby7"]
+
+[ext_resource type="Texture2D" uid="uid://dwb0smaxhb5mn" path="res://assets/scene/colored_castle.png" id="1_n142m"]
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_xjuod"]
+[ext_resource type="PackedScene" uid="uid://m2181ctc3sr1" path="res://Scenes/Scorer/scorer.tscn" id="4_a642x"]
+[ext_resource type="PackedScene" uid="uid://bqkpid28a0iyd" path="res://Scenes/Water/water.tscn" id="4_vu410"]
+[ext_resource type="PackedScene" uid="uid://bs86s78t21v4j" path="res://Scenes/GameUI/game_ui.tscn" id="5_vko8i"]
+[ext_resource type="PackedScene" uid="uid://dfm73webm5obx" path="res://Scenes/animalLauncherArena/launch_arena.tscn" id="6_3xbvp"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_xjuod")
+
+[node name="ColoredCastle" type="Sprite2D" parent="."]
+position = Vector2(594, 273)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_n142m")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(194, 275)
+
+[node name="PlayerHolder" type="Node" parent="."]
+
+[node name="Water" parent="." instance=ExtResource("4_vu410")]
+z_index = 1
+position = Vector2(591, 600)
+
+[node name="Scorer" parent="." instance=ExtResource("4_a642x")]
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UICanvas" instance=ExtResource("5_vko8i")]
+
+[node name="LaunchArena" parent="." instance=ExtResource("6_3xbvp")]
+position = Vector2(109, 317)
+scale = Vector2(2.12726, 1.94462)
