@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_djlwf")
 
-[node name="info" type="Label" parent="."]
+[node name="En_INFO" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
 offset_top = 101.0
@@ -51,7 +51,7 @@ offset_bottom = 150.0
 text = "Goal : throw the bird in the platform"
 label_settings = SubResource("LabelSettings_t0xrd")
 
-[node name="info2" type="Label" parent="."]
+[node name="En_INFO2" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
 offset_top = 165.0
@@ -59,6 +59,27 @@ offset_right = 1128.0
 offset_bottom = 214.0
 text = "Hover and drag your mouse above the bird
 to move it !!"
+label_settings = SubResource("LabelSettings_t0xrd")
+
+[node name="Br_INFO3" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 24.0
+offset_top = 101.0
+offset_right = 1128.0
+offset_bottom = 150.0
+text = "Objetivo : Arremese o pássaro  na plataforma"
+label_settings = SubResource("LabelSettings_t0xrd")
+
+[node name="Br_INFO4" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 24.0
+offset_top = 165.0
+offset_right = 1128.0
+offset_bottom = 214.0
+text = "Para arremesar o pássara arraste o mouse
+em cima dele !!"
 label_settings = SubResource("LabelSettings_t0xrd")
 
 [node name="MC" type="MarginContainer" parent="."]
@@ -79,6 +100,61 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "TUTORIAL"
 label_settings = SubResource("LabelSettings_omkl2")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TB_TranslateEN" type="TextureButton" parent="MC/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_sjxpm")
+
+[node name="MC_TB" type="MarginContainer" parent="MC/VBoxContainer/TB_TranslateEN"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -9.5
+offset_right = 47.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoEN" type="Label" parent="MC/VBoxContainer/TB_TranslateEN/MC_TB"]
+layout_mode = 2
+text = "EN-US"
+label_settings = SubResource("LabelSettings_d7rmp")
+horizontal_alignment = 1
+
+[node name="TB_TranslateBR" type="TextureButton" parent="MC/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_sjxpm")
+
+[node name="MC_TB" type="MarginContainer" parent="MC/VBoxContainer/TB_TranslateBR"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -9.5
+offset_right = 47.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoBR" type="Label" parent="MC/VBoxContainer/TB_TranslateBR/MC_TB"]
+layout_mode = 2
+text = "PT-BR"
+label_settings = SubResource("LabelSettings_d7rmp")
 horizontal_alignment = 1
 
 [node name="TB_MainScene" type="TextureButton" parent="."]
@@ -111,6 +187,12 @@ text = "Main Menu"
 label_settings = SubResource("LabelSettings_d7rmp")
 horizontal_alignment = 1
 
+[connection signal="mouse_entered" from="MC/VBoxContainer/TB_TranslateEN" to="." method="_on_tb_translate_en_mouse_entered"]
+[connection signal="mouse_exited" from="MC/VBoxContainer/TB_TranslateEN" to="." method="_on_tb_translate_en_mouse_exited"]
+[connection signal="pressed" from="MC/VBoxContainer/TB_TranslateEN" to="." method="_on_tb_translate_en_pressed"]
+[connection signal="mouse_entered" from="MC/VBoxContainer/TB_TranslateBR" to="." method="_on_tb_translate_br_mouse_entered"]
+[connection signal="mouse_exited" from="MC/VBoxContainer/TB_TranslateBR" to="." method="_on_tb_translate_br_mouse_exited"]
+[connection signal="pressed" from="MC/VBoxContainer/TB_TranslateBR" to="." method="_on_tb_translate_br_pressed"]
 [connection signal="mouse_entered" from="TB_MainScene" to="." method="_on_tb_main_scene_mouse_entered"]
 [connection signal="mouse_exited" from="TB_MainScene" to="." method="_on_tb_main_scene_mouse_exited"]
 [connection signal="pressed" from="TB_MainScene" to="." method="_on_tb_main_scene_pressed"]
